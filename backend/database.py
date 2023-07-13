@@ -1,11 +1,11 @@
 from model import Todo
 
 # MongoDB Driver
-import motor.motor_asyncio
+from motor.motor_asyncio import AsyncIOMotorClient
 
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb://localhost:27017')
+client = AsyncIOMotorClient('mongodb://localhost:27017')
 database = client.Todolist
-collection = database.todo
+collection = database.todo  
 
 
 async def fetch_one_todo(title):
