@@ -2,6 +2,7 @@ import React,{ useState, useEffect} from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css' 
 import axios from 'axios';
+import TodoView from './components/TodoListView';
 
 
 
@@ -16,12 +17,14 @@ function App() {
       .then(res => {
         setTodoList(res.data)
       })
+      .catch(err => console.log(err))
   });
 
   // Post a todo
   const addTodoHandler = () => {
     axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc })
       .then(res => console.log(res))
+      .catch(err => console.log(err))
 };
 
   return (
@@ -42,6 +45,7 @@ function App() {
           <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={addTodoHandler}>Add Task</button>
         </span>
         <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
+        <TodoView todoList={todoList} />
         
       </div>
       <h6 className="card text-dark bg-warning py-1 mb-0" >Copyright 2021, All rights reserved &copy;</h6>

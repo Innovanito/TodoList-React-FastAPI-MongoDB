@@ -4,7 +4,7 @@ from model import Todo
 from motor.motor_asyncio import AsyncIOMotorClient
 
 client = AsyncIOMotorClient('mongodb://localhost:27017')
-database = client.Todolist
+database = client.TodoList
 collection = database.todo  
 
 
@@ -35,5 +35,5 @@ async def update_todo(title, desc):
 
 
 async  def remove_todo(title):
-  await collection.delete_one({"title", title})
+  await collection.delete_one({"title": title})
   return True
