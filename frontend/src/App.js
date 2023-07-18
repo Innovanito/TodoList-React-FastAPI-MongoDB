@@ -23,7 +23,11 @@ function App() {
   // Post a todo
   const addTodoHandler = () => {
     axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc })
-      .then(res => console.log(res))
+      .then(
+        setTitle(''),
+        setDesc(''),
+        console.log()
+      )
       .catch(err => console.log(err))
 };
 
@@ -40,8 +44,8 @@ function App() {
           Add Your Task
         </h5>
         <span className="card-text"> 
-          <input className="mb-2 form-control titleIn" onChange={event => setTitle(event.target.value)} placeholder='Title'/> 
-          <input className="mb-2 form-control desIn" onChange={event => setDesc(event.target.value)}   placeholder='Description'/>
+          <input className="mb-2 form-control titleIn" value={title} onChange={event => setTitle(event.target.value)} placeholder='Title'/> 
+          <input className="mb-2 form-control desIn" value={desc} onChange={event => setDesc(event.target.value)}   placeholder='Description'/>
           <button className="btn btn-outline-primary mx-2 mb-3" style={{'borderRadius':'50px',"font-weight":"bold"}}  onClick={addTodoHandler}>Add Task</button>
         </span>
         <h5 className="card text-white bg-dark mb-3">Your Tasks</h5>
