@@ -16,9 +16,10 @@ function App() {
     axios.get('http://localhost:8000/api/todo')
       .then(res => {
         setTodoList(res.data)
+        console.log('todoList', todoList)
       })
       .catch(err => console.log(err))
-  });
+  }, [title,desc]);
 
   // Post a todo
   const addTodoHandler = () => {
@@ -29,7 +30,8 @@ function App() {
         console.log()
       )
       .catch(err => console.log(err))
-};
+  };
+  
 
   return (
     <div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{"width":"400px", "backgroundColor":"white", "marginTop":"15px"}} >

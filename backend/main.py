@@ -35,7 +35,7 @@ async def get_todo():
     return response
 
 
-@app.get("/api/todo{title}",response_model=Todo)
+@app.get("/api/todo/{title}",response_model=Todo)
 async def get_todo(title):
     response = await fetch_one_todo(title)
     if response:
