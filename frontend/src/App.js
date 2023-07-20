@@ -23,17 +23,15 @@ function App() {
 
   // Post a todo
   const addTodoHandler = () => {
+    setTodoList(
+      [...todoList,
+      { 'title': title, 'description': desc}]
+    );
     axios.post('http://localhost:8000/api/todo/', { 'title': title, 'description': desc })
-      .then(
-        setTitle(''),
-        setDesc(''),
-        // setTodoList(
-        //   ...todoList,
-        //   {
-        //     'title': title, 'description': desc
-        //   }
-        // )
-      )
+      .then((res) => {
+        setTitle('');
+        setDesc('');
+      })
       .catch(err => console.log(err))
   };
   
