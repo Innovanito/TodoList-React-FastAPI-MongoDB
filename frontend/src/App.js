@@ -27,11 +27,17 @@ function App() {
       .then(
         setTitle(''),
         setDesc(''),
-        console.log()
+        // setTodoList(
+        //   ...todoList,
+        //   {
+        //     'title': title, 'description': desc
+        //   }
+        // )
       )
       .catch(err => console.log(err))
   };
   
+  console.log('todo list', todoList);
 
   return (
     <div className="App list-group-item  justify-content-center align-items-center mx-auto" style={{"width":"400px", "backgroundColor":"white", "marginTop":"15px"}} >
