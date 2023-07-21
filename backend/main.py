@@ -52,11 +52,13 @@ async def post_todo(todo: Todo):
 
 
 @app.put("/api/todo/{title}", response_model=Todo)
-async def put_todo(title:str, desc: str):
-    response = await update_todo(title, desc)
+async def put_todo(todo: Todo):
+    newTitle = todo.title
+    newDesc = todo.description
+    response = await update_todo(newTitle, newDesc)
     if response:
       return response
-    raise HTTPException(404, f"there is no Todo item with this {title}")
+    raise HTTPException(404, "there is no Todo item with this")
 
 
 @app.delete("/api/todo/{title}")
